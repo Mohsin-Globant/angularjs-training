@@ -1,0 +1,24 @@
+<label>Year to Date Expenses</label>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th ng-click="showExpenses.sortType = 'category'; showExpenses.sortReverse = !showExpenses.sortReverse">Category</th>
+        <th ng-click="showExpenses.sortType = 'description'; showExpenses.sortReverse = !showExpenses.sortReverse">Desciption</th>
+        <th ng-click="showExpenses.sortType = 'amount'; showExpenses.sortReverse = !showExpenses.sortReverse">Amount</th>
+        <th>Mode of Payment</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="expense in showExpenses.allExpenses | orderBy:showExpenses.sortType:showExpenses.sortReverse">
+        <td>{{expense.date}}</td>
+        <td>{{expense.category}}</td>
+        <td>{{expense.description}}</td>
+        <td>{{expense.amount}}</td>
+        <td>{{expense.paymentMode}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

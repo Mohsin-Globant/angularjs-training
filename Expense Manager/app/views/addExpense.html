@@ -1,0 +1,68 @@
+<label>Add Expense</label>
+<ng-form name="addExpenseForm" role="form">
+  <div>
+    <label>Date:</label>
+    <input type="date" ng-model="addExpense.date">
+  </div>
+
+  <div class="has-error">
+    <label>Amount:</label>
+    <input type="number" name="amount" ng-model="addExpense.amount" required>
+    <p class="help-block" ng-show="addExpenseForm.amount.$touched && addExpenseForm.amount.$invalid">Field Required</p>
+  </div>
+
+  <div class="has-error">
+    <label>Category:</label>
+    <select name="category" ng-model="addExpense.category" required>
+      <option>Automobile</option>
+      <option>Entertainment</option>
+      <option>Family</option>
+      <option>Food</option>
+      <option>Health Care</option>
+    </select>
+    <p class="help-block" ng-show="addExpenseForm.category.$touched && addExpenseForm.category.$invalid">Field Required</p>
+  </div>
+
+  <div class="has-error">
+    <label>Mode of Payment:</label>
+    <select name="paymentMode" ng-model="addExpense.paymentMode" required>
+      <option>Cash</option>
+      <option>Credit Card</option>
+      <option>Electronic Transfer</option>
+    </select>
+    <p class="help-block" ng-show="addExpenseForm.paymentMode.$touched && addExpenseForm.paymentMode.$invalid">Field Required</p>
+  </div>
+
+  <div>
+    <label>Description:</label>
+    <input type="text" ng-model="addExpense.description">
+  </div>
+
+  <div>
+    <button ng-click="addExpense.add()">Save</button>
+  </div>
+</ng-form>
+
+<div>
+  <label>Year to date Expense</label>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Desciption</th>
+        <th>Amount</th>
+        <th>Mode of Payment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="expense in addExpense.allExpenses">
+        <td>{{expense.date}}</td>
+        <td>{{expense.category}}</td>
+        <td>{{expense.description}}</td>
+        <td>{{expense.amount}}</td>
+        <td>{{expense.paymentMode}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
